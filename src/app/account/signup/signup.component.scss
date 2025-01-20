@@ -1,0 +1,36 @@
+.signup-box {
+    background-color: orangered;
+    padding: 20px;
+    width: 300px;
+    margin: 170px auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 15px;
+
+    input {
+        background-color: white;
+        color: black;
+        border: 2px solid orangered;
+        width: 200px;
+        height: 25px;
+        margin: 10px;
+        border-radius: 5px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    button {
+        background-color: white;
+        color: black;
+        border: 2px solid orangered;
+        width: 200px;
+        height: 25px;
+        margin: 10px;
+        border-radius: 5px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+}
