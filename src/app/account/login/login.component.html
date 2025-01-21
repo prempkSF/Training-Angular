@@ -6,7 +6,9 @@
             <input type="text" placeholder="Password" name="password">
             <br>
             <button>Login</button>
+            <a routerLink="/account/signup" routerLinkActive="active" ariaCurrentWhenActive="page"><button>SignUp</button></a>
         </form>
+        <input type="text" [value]='name'>
     </div>
 </body>
 <router-outlet />

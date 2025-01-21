@@ -1,14 +1,47 @@
 <body>
     <div class="signup-box">
         <h2>User Sign Up</h2>
-        <form action="">
-            <input type="text" placeholder="Username" name="username">
-            <input type="text" placeholder="Password" name="password">
-            <input type="email" placeholder="Email" name="email">
-            <input type="number" placeholder="Mobile Number" name="number">
-            <br>
-            <input type="submit" value="Login">
-        </form>
+        <ejs-textbox class="dropdown e-input ejs-textbox" cssClass="e-outline" floatLabelType="Auto"
+            placeholder="Name"></ejs-textbox>
+        <ejs-textbox class="dropdown e-input ejs-textbox" cssClass="e-outline" floatLabelType="Auto" type="password"
+            placeholder="Password"></ejs-textbox>
+        <ejs-textbox class="dropdown e-input ejs-textbox" cssClass="e-outline" floatLabelType="Auto" type="email"
+            placeholder="Email"></ejs-textbox>
+        <ejs-textbox class="dropdown e-input ejs-textbox" cssClass="e-outline" floatLabelType="Auto" type="number"
+            placeholder="Number"></ejs-textbox>
+        <ejs-dropdownlist class="dropdown" id='games' cssClass="e-outline" placeholder="Select Country"
+            [dataSource]='sportsData' (change)='onChange($event)' [(value)]='valueGame'
+            [fields]='fieldsGame'></ejs-dropdownlist>
+
+        <ejs-dropdownlist id='employees' [dataSource]='data' [fields]='fields' [popupHeight]='height'
+            [placeholder]='watermark'>
+            <ejs-dropdownlist class="dropdown" id='employees' [dataSource]='data' [fields]='fields'
+                [popupHeight]='height' [placeholder]='watermark'>
+                <ng-template #headerTemplate>
+                    <div class="head"><span style="margin-left:17px;">Employee Info</span></div>
+                </ng-template>
+                <ng-template #itemTemplate let-data>
+                    <div>
+                        <div class="ename"> {{data.Name}} </div>
+                        <div class="job"> {{data.Designation}} </div>
+                    </div>
+                </ng-template>
+                <ng-template #valueTemplate let-data>
+                    <div>
+                        <div class="name"> {{data.Name}} </div>
+                        <div class="job"> {{data.Designation}} </div>
+                    </div>
+                </ng-template>
+            </ejs-dropdownlist>
+        </ejs-dropdownlist>
+        <br>
+        <div class="btns">
+            <button>SignUp</button>
+            <a routerLink="/account/login" routerLinkActive="active"
+                ariaCurrentWhenActive="page"><button>Login</button></a>
+        </div>
+
+
     </div>
 </body>
 <router-outlet />
