@@ -1,14 +1,33 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TextBox } from '@syncfusion/ej2-angular-inputs';
+import { dataSource } from './dataSource';
+import { FilterService, PageService, SortService } from '@syncfusion/ej2-angular-grids';
+import { CustomCityDirective } from './custom-city.directive';
+import { CustomPipe } from './custom.pipe';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrl: './product.component.scss'
+  styleUrl: './product.component.scss',
+  providers: [
+    PageService,
+    SortService,
+    FilterService,
+    CustomCityDirective,
+    CustomPipe
+  ],
+  
 })
 export class ProductComponent {
   @ViewChild('inputValue') inputValue!: TextBox;
-
+  dataSource: Object[] = dataSource;
+  filterSettings:Object ={ type: 'Excel' };
+  sortSettings: Object = {
+    columns: [
+    { field: 'OrderDate', direction: 'Descending' },
+    { field: 'ProductID', direction : 'Ascending'}]
+  };
+  
   textValue() {
     console.log(this.inputValue.value)
     if (this.inputValue.value) {
