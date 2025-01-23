@@ -2,13 +2,12 @@
     <div class="login-box">
         <div class="head">User Login</div>
         <form action="">
-            <input type="text" placeholder="Username" name="username">
-            <input type="text" placeholder="Password" name="password">
+            <input #username type="text" placeholder="Username" name="username">
+            <input #password type="text" placeholder="Password" name="password">
             <br>
-            <button>Login</button>
+            <button (click)="login()">Login</button>
             <a routerLink="/account/signup" routerLinkActive="active" ariaCurrentWhenActive="page"><button>SignUp</button></a>
         </form>
-        <input type="text" [value]='name'>
     </div>
 </body>
 <router-outlet />

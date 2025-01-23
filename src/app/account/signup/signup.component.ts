@@ -1,47 +1,49 @@
-import { Component } from '@angular/core';
-
+import { Component, ViewChild, ElementRef, } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { TextBox } from '@syncfusion/ej2-angular-inputs'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  public sportsData: Object[] = [
-    { Id: 'Asia', Continent : 'India' },
+
+  @ViewChild('username') username!: TextBox;
+  @ViewChild('password') password?: TextBox;
+  @ViewChild('email') email!: TextBox;
+  @ViewChild('number') mobileNumber?: TextBox;
+  signUpBtn?: boolean = true;
+  public countriesData: Object[] = [
+    { Id: 'Asia', Continent: 'India' },
     { Id: 'Antartica', Continent: 'Antartica' },
     { Id: 'North America', Continent: 'USA' },
     { Id: 'Europe', Continent: 'London' },
     { Id: 'Saudhi', Continent: 'Dubai' },
     { Id: 'Australia', Continent: 'Sydney' },
   ];
-  public valueGame: string = "";
-  public fieldsGame: Object = { text: 'Continent', value: 'Id' };
-  public onChange(args: any): void {
-    console.log(this.valueGame);
-  }
-  //   ngAfterViewInit(e: any): void {
-  //     // call the change event's function after initialized the component.
-  //     setTimeout(()=>
-  //   {
-  //     this.onChange(e);
-  //  })
-  // }
+  public valueCountry: string = "";
+  public fieldsCountry: Object = { text: 'Continent', value: 'Id' };
 
-  public data: { [key: string]: Object }[] = [
-    { Name: 'Andrew Fuller', Eimg: '7', Designation: 'Team Lead', Country: 'England' },
-    { Name: 'Anne Dodsworth', Eimg: '1', Designation: 'Developer', Country: 'USA' },
-    { Name: 'Janet Leverling', Eimg: '3', Designation: 'HR', Country: 'USA' },
-    { Name: 'Laura Callahan', Eimg: '2', Designation: 'Product Manager', Country: 'USA' },
-    { Name: 'Margaret Peacock', Eimg: '6', Designation: 'Developer', Country: 'USA' },
-    { Name: 'Michael Suyama', Eimg: '9', Designation: 'Team Lead', Country: 'USA' },
-    { Name: 'Nancy Davolio', Eimg: '4', Designation: 'Product Manager', Country: 'USA' },
-    { Name: 'Robert King', Eimg: '8', Designation: 'Developer ', Country: 'England' },
-    { Name: 'Steven Buchanan', Eimg: '10', Designation: 'CEO', Country: 'England' }
-  ];
-  // maps the appropriate column to fields property
-  public fields: Object = { text: 'Name', value: 'Eimg' };
-  // set the height of the popup element
-  public height: string = '250px';
-  // set the placeholder to DropDownList input element
-  public watermark: string = 'Select an employee';
+  changeBool()
+  {
+    this.signUpBtn = false;
+  }
+  submit() {
+    if (this.username?.value == "" || this.email.value == "" || this.mobileNumber?.value == "" || this.valueCountry == "") {
+
+      this.signUpBtn = true;
+    }
+    else {
+      this.signUpBtn = false;
+      localStorage.setItem('username', this.username!.value);
+      localStorage.setItem('password', this.password!.value);
+      localStorage.setItem('email', this.email!.value);
+      localStorage.setItem('phNumber', this.mobileNumber!.value);
+      localStorage.setItem("country", this.valueCountry);
+      alert("Sign Up Sucessful");
+      
+    }
+
+  }
+
 }
