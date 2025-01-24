@@ -2,8 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { TextBox } from '@syncfusion/ej2-angular-inputs';
 import { dataSource } from './dataSource';
 import { FilterService, PageService, SortService } from '@syncfusion/ej2-angular-grids';
-import { CustomCityDirective } from './custom-city.directive';
-import { CustomPipe } from './custom.pipe';
 
 @Component({
   selector: 'app-product',
@@ -12,9 +10,7 @@ import { CustomPipe } from './custom.pipe';
   providers: [
     PageService,
     SortService,
-    FilterService,
-    CustomCityDirective,
-    CustomPipe
+    FilterService
   ],
   
 })

@@ -26,7 +26,7 @@
             </e-column>
             <e-column field="Image" width="150">
                 <ng-template #template let-data>
-                    <a href='{{data.Image}}'>{{data.Image | custompipe: 'data.Image'}}</a>
+                    <a href='{{data.Image}}'>{{data.Image | custompipe}}</a>
                 </ng-template>
             </e-column>
             <e-column field='ShipAddress' headerText='Ship Address' textAlign='Left' width=150></e-column>
