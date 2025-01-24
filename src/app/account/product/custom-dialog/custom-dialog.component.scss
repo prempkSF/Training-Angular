@@ -1,39 +1,106 @@
+// Body and Global Styles
 body {
     height: 100%;
     text-align: right;
-
-}
-
-.form-group {
+  }
+  
+  // Form Group Styles
+  .form-group {
+    margin: 10px 0;
+    padding: 0 20px;
     text-align: center;
-    margin: 10px;
-
-}
-
-.btns {
+  
+    // Input Fields
+    .form-control {
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      transition: border 0.3s, box-shadow 0.3s;
+  
+      &::placeholder {
+        color: #888;
+        font-style: italic;
+      }
+  
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        background-color: #fff;
+      }
+    }
+  
+    // Date Input
+    input[type="date"] {
+      background-color: #fff;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+    }
+  }
+  
+  // Button Container Styling
+  .btns {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
-}
-.cancel-btn
-{
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  // Base Button Styling (Common for Cancel and Add)
+  .cancel-btn,
+  .add-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  // Cancel Button
+  .cancel-btn {
+    background-color: #f44336;
     color: white;
-    background-color: red;
-    padding: 10px;
-    border-radius: 15px;
-}
-.add-btn
-{
-    background-color: grey;
-    padding: 10px;
-    border-radius: 15px;
-}
-.addBtn
-{
+    border: 1px solid #f44336;
+  
+    &:hover {
+      background-color: #d32f2f;
+      border-color: #d32f2f;
+    }
+  }
+  
+  // Add Button
+  .add-btn {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #4caf50;
+  
+    &:hover {
+      background-color: #388e3c;
+      border-color: #388e3c;
+    }
+  }
+  
+  // Optional Extra Add Button (AddBtn)
+  .addBtn {
     margin: 20px;
     background-color: grey;
+    width: 120px;
+    height: 50px;
     border-radius: 15px;
-    width: 100px;
-    height: 40px;
     color: white;
-}
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #6c757d;
+    }
+  }
+  

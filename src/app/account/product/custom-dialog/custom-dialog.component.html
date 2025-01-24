@@ -1,7 +1,7 @@
 <body>
     <button class="addBtn" (click)="onOpenDialog($event)">Add Product</button>
     <ejs-dialog id='dialog' #ejDialog isModal='true' header='Add Product' [showCloseIcon]='true'
-         width='300px' height="300px" [visible]="false">
+         width='450px' height="500px" [visible]="false">
         <ng-template #content>
             <!-- <form> -->
                 <div class='form-group'>
@@ -23,7 +23,7 @@
                     <input #shipAddress type='text' placeholder="City" class='form-control' id='contact' />
                 </div>
                 <div class='form-group'>
-                    <input #shipcountry type="text" placeholder="Address" id='address' />
+                    <input #shipcountry type="text" placeholder="Address" class='form-control' id='contact' />
                 </div>
             <!-- </form> -->
             <div class="btns">
