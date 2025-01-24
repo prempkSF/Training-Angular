@@ -9,6 +9,8 @@ import { ProductComponent } from './product/product.component';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { CustomPipe } from './product/custom.pipe';
 import { CustomCityDirective } from './product/custom-city.directive';
+import { DialogAllModule } from '@syncfusion/ej2-angular-popups';
+import { CustomDialogComponent } from './product/custom-dialog/custom-dialog.component';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { CustomCityDirective } from './product/custom-city.directive';
     SignupComponent,
     ProductComponent,
     CustomPipe,
-    CustomCityDirective
+    CustomCityDirective,
+    CustomDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,7 @@ import { CustomCityDirective } from './product/custom-city.directive';
     TextBoxModule,
     DropDownListModule,
     GridModule,
+    DialogAllModule
   ]
 })
 export class AccountModule {

@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { TextBox } from '@syncfusion/ej2-angular-inputs';
-import { dataSource } from './dataSource';
-import { FilterService, PageService, SortService } from '@syncfusion/ej2-angular-grids';
+import { dataSource, ProductOrder } from './dataSource';
+import { FilterService, Grid, PageService, SortService } from '@syncfusion/ej2-angular-grids';
 
 @Component({
   selector: 'app-product',
@@ -12,22 +11,21 @@ import { FilterService, PageService, SortService } from '@syncfusion/ej2-angular
     SortService,
     FilterService
   ],
-  
 })
 export class ProductComponent {
-  @ViewChild('inputValue') inputValue!: TextBox;
+  
+  @ViewChild('grid') grid!:Grid;
   dataSource: Object[] = dataSource;
-  filterSettings:Object ={ type: 'Excel' };
+  filterSettings: Object = { type: 'Excel' };
   sortSettings: Object = {
     columns: [
-    { field: 'OrderDate', direction: 'Descending' },
-    { field: 'ProductID', direction : 'Ascending'}]
+      { field: 'OrderDate', direction: 'Ascending' },
+      { field: 'ProductID', direction: 'Ascending' }]
   };
-  
-  textValue() {
-    console.log(this.inputValue.value)
-    if (this.inputValue.value) {
-      localStorage.setItem('isValue', 'true');
-    }
+  onDataReceived(data: ProductOrder) {
+    // Add the new data to the grid
+    this.dataSource.push(data);
+    this.grid.refresh();
+
   }
 }

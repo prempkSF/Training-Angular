@@ -1,0 +1,39 @@
+body {
+    height: 100%;
+    text-align: right;
+
+}
+
+.form-group {
+    text-align: center;
+    margin: 10px;
+
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.cancel-btn
+{
+    color: white;
+    background-color: red;
+    padding: 10px;
+    border-radius: 15px;
+}
+.add-btn
+{
+    background-color: grey;
+    padding: 10px;
+    border-radius: 15px;
+}
+.addBtn
+{
+    margin: 20px;
+    background-color: grey;
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    color: white;
+}
