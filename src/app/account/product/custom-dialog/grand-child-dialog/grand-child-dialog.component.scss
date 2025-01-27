@@ -1,0 +1,136 @@
+// Global Body Styles (Dialog Context)
+body {
+  height: 100%;
+  text-align: right;
+}
+
+// Form Group Styling for Inputs
+.ejs-dialog .form-group {
+  margin: 15px 0;
+  padding: 0 20px;
+  text-align: center;
+
+  // Input Fields Styling
+  .form-control {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    transition: border 0.3s, box-shadow 0.3s;
+
+    &::placeholder {
+      color: #888;
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+      background-color: #fff;
+    }
+  }
+
+  // Date Input Styling (if used)
+  input[type="date"] {
+    background-color: #fff;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+  }
+}
+
+// Button Container Styling
+.ejs-dialog .btns {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+// Base Button Styling (Cancel & Add)
+.ejs-dialog .cancel-btn,
+.ejs-dialog .add-btn,
+.ejs-dialog .submit-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+// Cancel Button Styling
+.ejs-dialog .cancel-btn {
+  background-color: #f44336;
+  color: white;
+  border: 1px solid #f44336;
+
+  &:hover {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+  }
+}
+
+// Add Button Styling (Submit or Add Product)
+.ejs-dialog .add-btn {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+
+  &:hover {
+    background-color: #388e3c;
+    border-color: #388e3c;
+  }
+}
+
+// Optional Extra Add Button (AddBtn)
+.ejs-dialog .addBtn {
+  margin: 20px;
+  background-color: grey;
+  width: 120px;
+  height: 50px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #6c757d;
+  }
+}
+
+// Additional Styling for the Dialog Box
+.ejs-dialog {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+// Header Styling for the Dialog
+.ejs-dialog .e-dlg-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+// Dialog Content Styling
+.ejs-dialog .e-dlg-content {
+  padding: 20px;
+}
+
+// Style for the Dialog Close Button (X Icon)
+.ejs-dialog .e-dlg-closeicon-btn {
+  color: #888;
+  font-size: 20px;
+}
+
+.ejs-dialog .e-dlg-closeicon-btn:hover {
+  color: #333;
+}

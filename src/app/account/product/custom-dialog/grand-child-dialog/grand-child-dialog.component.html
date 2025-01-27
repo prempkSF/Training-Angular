@@ -1,0 +1,16 @@
+<ejs-dialog id='grandparentDialog' #grandparentDialog 
+  [isModal]='true' [visible]='false' header='Product Stock Information'
+  [showCloseIcon]='true' width='450px' height='300px'>
+  
+  <ng-template #content>
+    <div class="form-group">
+      <label>Product Stock</label>
+      <input type="text" [(ngModel)]="additionalData" class="form-control" placeholder="Enter Stock" />
+    </div>
+
+    <div class="btns">
+      <div class="cancel-btn" (click)="onCloseDialog()">Cancel</div>
+      <div class="add-btn" (click)="onSubmit()">Submit</div>
+    </div>
+  </ng-template>
+</ejs-dialog>

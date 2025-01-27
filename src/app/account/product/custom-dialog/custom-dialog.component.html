@@ -1,35 +1,40 @@
-<body>
-    <button class="addBtn" (click)="onOpenDialog($event)">Add Product</button>
-    <ejs-dialog id='dialog' #ejDialog isModal='true' header='Add Product' [showCloseIcon]='true'
-         width='450px' height="500px" [visible]="false">
-        <ng-template #content>
-            <!-- <form> -->
-                <div class='form-group'>
-                    <input #productName type='text' class='form-control' id='name' placeholder="Product Name" />
-                </div>
-                <div class='form-group'>
-                    <input #imgUrl type='text' placeholder='Image Url' class='form-control' id='email' />
-                </div>
-                <div class='form-group'>
-                    <input #productID type='text' placeholder="Product ID" class='form-control' id='contact' />
-                </div>
-                <div class='form-group'>
-                    <input #customerID type='text' placeholder="Customer ID" class='form-control' id='contact' />
-                </div>
-                <div class='form-group'>
-                    <input #orderDate type='date' placeholder="Order Date" class='form-control' id='contact' />
-                </div>
-                <div class='form-group'>
-                    <input #shipAddress type='text' placeholder="City" class='form-control' id='contact' />
-                </div>
-                <div class='form-group'>
-                    <input #shipcountry type="text" placeholder="Address" class='form-control' id='contact' />
-                </div>
-            <!-- </form> -->
-            <div class="btns">
-                <div class="cancel-btn" (click)="onCloseDialog($event)">Cancel</div>
-                <div class="add-btn" (click)="onSubmit()">Add</div>
-            </div>
-        </ng-template>
-    </ejs-dialog>
-</body>
+<button class="addBtn" (click)="onOpenDialog($event)">Add Product</button>
+<ejs-dialog id='parentDialog' #parentDialog isModal='true' header='Add Product'
+  [showCloseIcon]='true' width='450px' height="500px" [visible]="false">
+  
+  <ng-template #content>
+    <!-- Product details form -->
+    <div class='form-group'>
+      <input #productName type='text' class='form-control' id='name' placeholder="Product Name" />
+    </div>
+    <div class='form-group'>
+      <input #imgUrl type='text' placeholder='Image Url' class='form-control' id='email' />
+    </div>
+    <div class='form-group'>
+      <input #productID type='text' placeholder="Product ID" class='form-control' id='contact' />
+    </div>
+    <div class='form-group'>
+      <input #customerID type='text' placeholder="Customer ID" class='form-control' id='contact' />
+    </div>
+    <div class='form-group'>
+      <input #orderDate type='date' placeholder="Order Date" class='form-control' id='contact' />
+    </div>
+    <div class='form-group'>
+      <input #shipAddress type='text' placeholder="City" class='form-control' id='contact' />
+    </div>
+    <div class='form-group'>
+      <input #shipcountry type="text" placeholder="Address" class='form-control' id='contact' />
+    </div>
+    
+    <div class="btns">
+      <div class="cancel-btn" (click)="onCloseDialog($event)">Cancel</div>
+      <div class="add-btn" (click)="onSubmit()">Add</div>
+    </div>
+    
+    <!-- Button to open Grandparent Dialog -->
+    <div class="grandparent-btn" (click)="openGrandparentDialog()">Open Grandparent Dialog</div>
+  </ng-template>
+</ejs-dialog>
+
+<!-- Grandparent Dialog (this will be embedded into the parent dialog component) -->
+<app-grandparent-dialog #grandparentDialog (dataSent)="onGrandparentDataReceived($event)"></app-grandparent-dialog>

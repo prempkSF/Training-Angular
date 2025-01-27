@@ -11,7 +11,8 @@ import { CustomPipe } from './product/custom.pipe';
 import { CustomCityDirective } from './product/custom-city.directive';
 import { DialogAllModule } from '@syncfusion/ej2-angular-popups';
 import { CustomDialogComponent } from './product/custom-dialog/custom-dialog.component';
-
+import { GrandparentDialogComponent } from './product/custom-dialog/grand-child-dialog/grand-child-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CustomDialogComponent } from './product/custom-dialog/custom-dialog.com
     ProductComponent,
     CustomPipe,
     CustomCityDirective,
-    CustomDialogComponent
+    CustomDialogComponent,
+    GrandparentDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { CustomDialogComponent } from './product/custom-dialog/custom-dialog.com
     TextBoxModule,
     DropDownListModule,
     GridModule,
-    DialogAllModule
+    DialogAllModule,
+    FormsModule
   ]
 })
 export class AccountModule {
