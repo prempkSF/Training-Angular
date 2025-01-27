@@ -1,0 +1,11 @@
+<div >
+    <label [attr.for]="login.key">{{ login.label }}</label>
+    <div>
+      @switch (login.controlType) {
+        @case ('textbox') {
+          <input [id]="login.key" [type]="login.type">
+        }
+      }
+    </div>
+    @if (!isValid) {<div class="errorMessage">{{ login.label }} is required</div>}
+  </div>

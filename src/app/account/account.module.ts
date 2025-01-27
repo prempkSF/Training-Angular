@@ -9,11 +9,13 @@ import { ProductComponent } from './product/product.component';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { CustomPipe } from './product/custom.pipe';
 import { CustomCityDirective } from './product/custom-city.directive';
-import { DialogAllModule } from '@syncfusion/ej2-angular-popups';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { CustomDialogComponent } from './product/custom-dialog/custom-dialog.component';
 import { GrandparentDialogComponent } from './product/custom-dialog/grand-child-dialog/grand-child-dialog.component';
 import { FormsModule } from '@angular/forms';
-
+import { LoginFormComponent } from './login/login-form/login-form.component';
+import { ReactiveformComponent } from './login/reactiveform/reactiveform.component';
+import { ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
   declarations: [
     LoginComponent,
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     CustomPipe,
     CustomCityDirective,
     CustomDialogComponent,
-    GrandparentDialogComponent
+    GrandparentDialogComponent,
+    LoginFormComponent,
+    ReactiveformComponent
   ],
   imports: [
     CommonModule,
@@ -30,8 +34,9 @@ import { FormsModule } from '@angular/forms';
     TextBoxModule,
     DropDownListModule,
     GridModule,
-    DialogAllModule,
-    FormsModule
+    DialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule {

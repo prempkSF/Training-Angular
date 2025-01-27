@@ -1,13 +1,18 @@
-<body>
+<!-- <body>
     <div class="login-box">
         <div class="head">User Login</div>
+
+        <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
+        <app-login-form></app-login-form>
         <form action="">
             <input #username type="text" placeholder="Username" name="username">
             <input #password type="text" placeholder="Password" name="password">
             <br>
             <button (click)="login()">Login</button>
-            <a routerLink="/account/signup" routerLinkActive="active" ariaCurrentWhenActive="page"><button>SignUp</button></a>
+            <a routerLink="/account/signup" routerLinkActive="active"
+                ariaCurrentWhenActive="page"><button>SignUp</button></a>
         </form>
     </div>
 </body>
-<router-outlet />
+<router-outlet /> -->
+<app-reactiveform></app-reactiveform>

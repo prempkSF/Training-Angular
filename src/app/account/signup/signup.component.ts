@@ -1,5 +1,4 @@
-import { Component, ViewChild, ElementRef, } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
 import { TextBox } from '@syncfusion/ej2-angular-inputs'
 @Component({
   selector: 'app-signup',
