@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { ReactiveformComponent } from './login/reactiveform/reactiveform.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
+import { SidebarModule, ToolbarModule } from '@syncfusion/ej2-angular-navigations';
+import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -36,7 +38,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     GridModule,
     DialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SidebarModule,
+    ToolbarModule,
+    ListViewModule
   ]
 })
 export class AccountModule {

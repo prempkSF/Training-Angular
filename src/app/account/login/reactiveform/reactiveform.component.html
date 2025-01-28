@@ -1,25 +1,71 @@
-<div class="login-container">
-  <h2>Login</h2>
+<div class="form-container">
+
+  <div *ngIf="!containerTrue" >
+      <p>This is SignUp</p>
+  </div>
+  <div *ngIf="containerTrue">
+    <p>This is Login</p>
+</div>
+
+<ng-container *ngIf="containerTrue">
+  <p>This is Login</p>
+</ng-container>
+
+<ng-container *ngIf="!containerTrue">
+  <p>This is SignUp</p>
+</ng-container>
+
+  <div *ngIf="containerTrue">
+    <ng-container *ngTemplateOutlet="login"></ng-container>
+  </div>
+
+  <div *ngIf="!containerTrue">
+    <ng-container *ngTemplateOutlet="signup"></ng-container>
+  </div>
+
+
+<ng-template #signup>
+      <p>This is SignUp</p>
+    </ng-template>
+  
+    <ng-template #login>
+      <p>This is Login</p>
+    </ng-template>
+  
+
+  <button (click)="onclick()">{{containerTrue }}</button>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input id="username" formControlName="username" type="text" class="form-control">
-      <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid" class="error-message">
-        <div *ngIf="loginForm.get('username')?.hasError('required')">Username is required.</div>
-        <div *ngIf="loginForm.get('username')?.hasError('minlength')">Username must be at least 4 characters long.</div>
+    <!-- Dynamically generate form controls -->
+    <div *ngFor="let field of formFields" class="form-group">
+      <label [for]="field.name">{{ field.label }}</label>
+
+      <!-- If the field type is 'select', generate a dropdown -->
+      <ng-container *ngIf="field.type === 'select'">
+        <select [id]="field.name" [formControlName]="field.name" class="form-control"
+          [ngClass]="{ 'is-invalid': loginForm.controls[field.name].invalid && loginForm.controls[field.name].touched }">
+          <option value="" disabled>Select your designation</option>
+          <option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </ng-container>
+
+      <!-- If the field type is not 'select', generate a standard input -->
+      <div *ngIf="field.type !== 'select'">
+        <ejs-textbox cssClass="e-outline" [id]="field.name" [type]="field.type" [formControlName]="field.name"
+          [ngClass]="{ 'is-invalid': loginForm.controls[field.name].invalid && loginForm.controls[field.name].touched }"></ejs-textbox>
+      </div>
+
+      <div *ngIf="loginForm.controls[field.name].invalid && loginForm.controls[field.name].touched"
+        class="invalid-feedback">
+        <!-- Display validation errors dynamically based on the field's errors -->
+        <div *ngIf="loginForm.controls[field.name].hasError('required')">{{ field.errorMessages.required }}</div>
+        <div *ngIf="loginForm.controls[field.name].hasError('minlength')">{{ field.errorMessages.minlength }}</div>
+        <div *ngIf="loginForm.controls[field.name].hasError('weakPassword')">{{ field.errorMessages.weakPassword }}
+        </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input id="password" formControlName="password" type="password" class="form-control">
-      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error-message">
-        <div *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</div>
-        <div *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 4 characters long.</div>
-        <div *ngIf="loginForm.get('password')?.hasError('weakPassword')">Password must contain at least one special character.</div>
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Submit</button>
   </form>
+
+
 </div>

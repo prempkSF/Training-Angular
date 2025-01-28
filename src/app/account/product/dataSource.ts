@@ -36,11 +36,11 @@ export class ProductOrder {
 export let dataSource: ProductOrder[] = [
   new ProductOrder(
     "https://live.staticflickr.com/4455/36964443753_10feb3de3b_h.jpg",
-    "Bonny", 999, "CID301", new Date(8364186e5), 'India', '59 rue de l Abbaye', 20 // Stock added here
+    "Bonny", 999, "CID301", new Date(8364186e5), 'India', '59 rue de l Abbaye', 5 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/2411/2081337596_a9a284076c_h.jpg",
-    "Building Blocks", 1000, "CID302", new Date(836505e6), 'Luisenstr. 48', 'Germany', 15 // Stock added here
+    "Building Blocks", 1000, "CID302", new Date(836505e6), 'Luisenstr. 48', 'Germany', 0 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/4064/4708860000_91de9ae6ae_b.jpg",
@@ -48,7 +48,7 @@ export let dataSource: ProductOrder[] = [
   ),
   new ProductOrder(
     "https://live.staticflickr.com/1681/25798832060_edb198b562_h.jpg",
-    "Teddy", 1002, "CID304", new Date(8367642e5), '2, rue du Commerce', 'France', 25 // Stock added here
+    "Teddy", 1002, "CID304", new Date(8367642e5), '2, rue du Commerce', 'France', 245 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/5056/5542589987_d88e54a1f8_h.jpg",
@@ -56,11 +56,11 @@ export let dataSource: ProductOrder[] = [
   ),
   new ProductOrder(
     "https://live.staticflickr.com/1261/1322767438_fb59f1c2fe_h.jpg",
-    "Expresso", 1004, "CID306", new Date(836937e6), 'Rua do Paço, 67', 'Brazil', 18 // Stock added here
+    "Expresso", 1004, "CID306", new Date(836937e6), 'Rua do Paço, 67', 'Brazil', 189 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/5100/5427758444_aa41a392b9_h.jpg",
-    "Reitey", 1005, "CID307", new Date(8370234e5), 'Hauptstr. 31', 'Switzerland', 22 // Stock added here
+    "Reitey", 1005, "CID307", new Date(8370234e5), 'Hauptstr. 31', 'Switzerland', 272 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/4139/4874067340_bb54994e7e_h.jpg",
@@ -76,7 +76,7 @@ export let dataSource: ProductOrder[] = [
   ),
   new ProductOrder(
     "https://live.staticflickr.com/4183/33662361524_4e8409a5f9_h.jpg",
-    "Electro", 1009, "CID311", new Date(8375418e5), 'Kirchgasse 6', 'Austria', 60 // Stock added here
+    "Electro", 1009, "CID311", new Date(8375418e5), 'Kirchgasse 6', 'Austria', 670 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/5553/14639700537_eab0997db3_z.jpg",
@@ -84,7 +84,7 @@ export let dataSource: ProductOrder[] = [
   ),
   new ProductOrder(
     "https://live.staticflickr.com/4178/34463808396_4478a2a43c_h.jpg",
-    "YardInk", 1011, "CID313", new Date(8377146e5), 'Mehrheimerstr. 369', 'Germany', 8 // Stock added here
+    "YardInk", 1011, "CID313", new Date(8377146e5), 'Mehrheimerstr. 369', 'Germany', 68 // Stock added here
   ),
   new ProductOrder(
     "https://live.staticflickr.com/8477/8269945950_e0fbe65382_z.jpg",
