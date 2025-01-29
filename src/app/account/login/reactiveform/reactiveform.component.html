@@ -1,39 +1,4 @@
 <div class="form-container">
-
-  <div *ngIf="!containerTrue" >
-      <p>This is SignUp</p>
-  </div>
-  <div *ngIf="containerTrue">
-    <p>This is Login</p>
-</div>
-
-<ng-container *ngIf="containerTrue">
-  <p>This is Login</p>
-</ng-container>
-
-<ng-container *ngIf="!containerTrue">
-  <p>This is SignUp</p>
-</ng-container>
-
-  <div *ngIf="containerTrue">
-    <ng-container *ngTemplateOutlet="login"></ng-container>
-  </div>
-
-  <div *ngIf="!containerTrue">
-    <ng-container *ngTemplateOutlet="signup"></ng-container>
-  </div>
-
-
-<ng-template #signup>
-      <p>This is SignUp</p>
-    </ng-template>
-  
-    <ng-template #login>
-      <p>This is Login</p>
-    </ng-template>
-  
-
-  <button (click)="onclick()">{{containerTrue }}</button>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <!-- Dynamically generate form controls -->
     <div *ngFor="let field of formFields" class="form-group">

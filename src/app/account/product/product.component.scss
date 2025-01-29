@@ -58,8 +58,23 @@
         background-color: rgb(25, 118, 210);
     }
 }
-
+.e-toolbar .e-toolbar-item .e-tbar-btn .e-icons.e-btn-icon {
+    margin: 0;
+    min-width: 24px;
+    width: auto;
+    font-size: 29px;
+    line-height: 30px;
+    background-color: white;
+}
 .e-tbar-menu-icon:before {
     content: "\e718";
-    width: 100px;
+}
+.e-sidebar.e-left {
+    border-right: 2px solid rgb(25, 118, 210);
+}
+.e-sidebar.e-left.e-open {
+    transition: transform 0.5s ease;
+}
+.e-sidebar.e-left.e-transition.e-close {
+    transition: transform 0.5s ease-out, visibility 500ms;
 }

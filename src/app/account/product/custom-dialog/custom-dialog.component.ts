@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, ElementRef, OnDestroy } from '@angular/core';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { ProductOrder } from '../dataSource';
 import { GrandparentDialogComponent } from './grand-child-dialog/grand-child-dialog.component';  // Import the Grandparent Dialog component
@@ -8,7 +8,8 @@ import { GrandparentDialogComponent } from './grand-child-dialog/grand-child-dia
   templateUrl: './custom-dialog.component.html',
   styleUrls: ['./custom-dialog.component.scss']
 })
-export class CustomDialogComponent {
+export class CustomDialogComponent implements OnDestroy {
+
 
   @ViewChild("parentDialog") parentDialog!: DialogComponent;
   @ViewChild('grandparentDialog') grandparentDialogComponent!: GrandparentDialogComponent;
@@ -63,5 +64,12 @@ export class CustomDialogComponent {
   onGrandparentDataReceived(data: string) {
     console.log("Grandparent Data: ", data);
     // You can handle the data received from the Grandparent Dialog here
+  }
+
+  ngOnDestroy()
+  {
+    
+    this.dataSent.complete();
+    console.log("Event Closed",this.dataSent.closed);
   }
 }

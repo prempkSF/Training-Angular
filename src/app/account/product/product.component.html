@@ -16,9 +16,9 @@
     </ejs-toolbar>
   </div>
   <ejs-sidebar #sidebarInstance id="listSidebar" class="sidebar-list" #sidebarTreeviewInstance width="250px"
-    target=".listmaincontent" type="Push" [isOpen]='false'>
-    <ejs-listview id="listSidebarList" [dataSource]='ListData' template={this.listTemplate} [fields]='listFields'
-      (select)="OnSelect($event)">
+    target=".listmaincontent" type="Slide" [isOpen]='false'>
+    <ejs-listview id="listSidebarList" bind-dataSource='ListData' template={this.listTemplate} [fields]='listFields'
+      (select)="OnSelect($event)" >
       <ng-template #template let-dataSource="">
         <div class="list-wrapper">
 
@@ -28,9 +28,9 @@
     </ejs-listview>
   </ejs-sidebar>
   <!-- Custom Dialog (Parent Dialog) -->
-  <!-- <div id="dialog-container">
+  <div #dialogContainer id="dialog-container">
     <app-custom-dialog (dataSent)="onDataReceived($event)"></app-custom-dialog>
-  </div> -->
+  </div>
   <!-- <div class="btns">
     <button class="catergotybtn" (click)="changeStock(10)">Less than 10</button>
     <button class="catergotybtn" (click)="changeStock(100)">Less than 100</button>
@@ -38,7 +38,8 @@
   </div> -->
 
   <ng-container>
-    <ng-container *ngTemplateOutlet="productGrid; context: {$implicit: gridShow==1?dataSourceStockLessTen:gridShow==2?dataSourceStockLessFifty:dataSourceStockGreaterHundred }"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="productGrid; context: {$implicit: gridShow==1?dataSourceStockLessTen:gridShow==2?dataSourceStockLessHundred:gridShow==3?dataSourceStockGreaterHundred:dataSource }"></ng-container>
   </ng-container>
   <!-- <ng-container *ngIf="gridShow==1">
     <h1 class="heading">Product Stock Less than 10</h1>
@@ -61,26 +62,26 @@
 
       <e-columns>
         <e-column field='ProductName' headerText='Product Name' textAlign='Left' width=150></e-column>
-        <e-column field='ProductID' headerText='Product ID' textAlign='Left' width=100></e-column>
-        <e-column field="Image" headerText="Product Image" textAlign="Left" width="100">
+        <e-column field='ProductID' headerText='Product ID' textAlign='Left' width=150></e-column>
+        <e-column field="Image" headerText="Product Image" textAlign="Left" width="150">
           <ng-template class="img" #template let-data>
             <img src="{{data.Image}}" style="width:80px;height:80px;">
           </ng-template>
         </e-column>
-        <e-column field='CustomerID' headerText='Customer ID' width=100></e-column>
-        <e-column field='OrderDate' headerText='Order Date' textAlign='Left' format='d/M/y' width=100>
+        <e-column field='CustomerID' headerText='Customer ID' width=150></e-column>
+        <e-column field='OrderDate' headerText='Order Date' textAlign='Left' format='d/M/y' width=150>
           <ng-template #template let-data>
             <div>{{data.OrderDate | date:"longDate"}}</div>
           </ng-template>
         </e-column>
-        <e-column field='ShipCountry' headerText='Ship Country' width="100">
+        <e-column field='ShipCountry' headerText='Ship Country' width="150">
           <ng-template #template let-data>
             <div appCustomCity [shipCity]='data.ShipCity'>
               {{data.ShipCountry}}
             </div>
           </ng-template>
         </e-column>
-        <e-column field='Stock' headerText='Stock' textAlign='Right' width=100></e-column> <!-- New Stock Column -->
+        <e-column field='Stock' headerText='Stock' textAlign='Right' width=120></e-column> <!-- New Stock Column -->
         <e-column field="Image" width="150">
           <ng-template #template let-data>
             <a href='{{data.Image}}'>{{data.Image | custompipe}}</a>
