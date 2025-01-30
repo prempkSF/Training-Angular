@@ -20,7 +20,7 @@ export class DeactivateService implements CanDeactivate<ProductComponent> {
     }
     else
     {
-      alert("Close")
+      alert("Close");
       return false;
     }
   }

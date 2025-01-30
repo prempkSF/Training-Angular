@@ -1,18 +1,30 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Login } from './reactive-form/class/login-baseclass';
-import { FormGroup } from '@angular/forms';
-import { ReactiveControlService } from './reactive-form/control-service/reactive-control.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { ReactiveFormService } from './reactive-form/service/reactive-form.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+//     template: `<h1>Hello, you have pressed enter {{counter}} number of times!</h1> Press enter
+// key to increment the counter. <button (click)="resetCounter()">Reset Counter</button>`,
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  counter = 0;
+  @HostListener('window:keydown.ArrowUp')
+  handleKeyUp(event: KeyboardEvent) {
+    this.counter++;
+  }
+
+  @HostListener('window:keydown.ArrowDown')
+  handleKeyDown(event: KeyboardEvent) {
+    this.counter--;
+  }
+  resetCounter() {
+    this.counter = 0;
+  }
   islogin: boolean = false;
 
   

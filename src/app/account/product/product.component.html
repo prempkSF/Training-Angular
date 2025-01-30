@@ -28,9 +28,9 @@
     </ejs-listview>
   </ejs-sidebar>
   <!-- Custom Dialog (Parent Dialog) -->
-  <div #dialogContainer id="dialog-container">
+  <!-- <div #dialogContainer id="dialog-container">
     <app-custom-dialog (dataSent)="onDataReceived($event)"></app-custom-dialog>
-  </div>
+  </div> -->
   <!-- <div class="btns">
     <button class="catergotybtn" (click)="changeStock(10)">Less than 10</button>
     <button class="catergotybtn" (click)="changeStock(100)">Less than 100</button>
@@ -62,7 +62,11 @@
 
       <e-columns>
         <e-column field='ProductName' headerText='Product Name' textAlign='Left' width=150></e-column>
-        <e-column field='ProductID' headerText='Product ID' textAlign='Left' width=150></e-column>
+        <e-column field='ProductID' headerText='Product ID' textAlign='Left' width=150  >
+          <ng-template #template  let-data>
+            <div ><a (click)="getProduct(data.ProductID)">{{data.ProductID}}</a></div>
+          </ng-template>
+        </e-column>
         <e-column field="Image" headerText="Product Image" textAlign="Left" width="150">
           <ng-template class="img" #template let-data>
             <img src="{{data.Image}}" style="width:80px;height:80px;">

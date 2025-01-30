@@ -18,6 +18,7 @@ import { ReactiveformComponent } from './login/reactiveform/reactiveform.compone
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { SidebarModule, ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -28,7 +29,8 @@ import { ListViewModule } from '@syncfusion/ej2-angular-lists';
     CustomDialogComponent,
     GrandparentDialogComponent,
     LoginFormComponent,
-    ReactiveformComponent
+    ReactiveformComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

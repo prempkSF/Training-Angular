@@ -27,6 +27,18 @@ export class ProductOrder {
     this.ShipCountry = ShipCountry;
     this.Stock = Stock; // Assign stock
   }
+  ToObject():object{
+    return {
+      image:this.Image,
+      productName: this.ProductName,
+      productID: this.ProductID,
+      customerID: this.CustomerID,
+      orderDate: this.OrderDate,
+      shipAddress: this.ShipAddress,
+      shipCountry: this.ShipCountry,
+      stock: this.Stock 
+    }
+  }
 }
 
 

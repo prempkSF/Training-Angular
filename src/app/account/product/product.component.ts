@@ -1,10 +1,12 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { dataSource, ProductOrder } from './dataSource';
 import { FilterService, Grid, PageService, SortService } from '@syncfusion/ej2-angular-grids';
 import { Subscription } from 'rxjs';
 import { DataCommunicationService } from '../data-communicate.service';
 import { ClickEventArgs, SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-product',
@@ -47,6 +49,11 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.sidebarInstance.toggle();
     }
   }
+
+  @HostListener('mouseenter')
+  handleKeyDown(event: KeyboardEvent) {
+    localStorage.setItem('isValue',"true");
+  }
   OnSelect(args: any) {
     if (args.index == 0) {
       this.gridShow = GridEnum.ten;
@@ -66,10 +73,9 @@ export class ProductComponent implements OnInit, OnDestroy {
       { field: 'ProductID', direction: 'Ascending' }]
   };
 
-  constructor(private dataCommunicationService: DataCommunicationService) { }
+  constructor(private router:Router,private dataCommunicationService: DataCommunicationService) { }
   ngOnInit(): void {
     // this.ngOnInit()
-    // this.interval
     this.subscription.add(
       this.dataCommunicationService.grandparentData$.subscribe(data => {
         if (data) {
@@ -79,8 +85,13 @@ export class ProductComponent implements OnInit, OnDestroy {
     )
   );
   }
-
-
+ 
+getProduct(productID:number)
+{
+  const product=dataSource.find((prod)=>prod.ProductID==productID);
+  console.log(product)
+  this.router.navigate(['account/product/',productID],{state:{data:product}});
+}
 
   changeStock(stock: number) {
 

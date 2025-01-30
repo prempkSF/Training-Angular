@@ -1,0 +1,14 @@
+<div class="product-detail-container">
+  <div class="product-image">
+    <img [src]="product.Image" [alt]="product.ProductName">
+  </div>
+  <div class="product-info">
+    <h1>{{ product.ProductName }}</h1>
+    <p><strong>Product ID:</strong> {{ product.ProductID }}</p>
+    <p><strong>Customer ID:</strong> {{ product.CustomerID }}</p>
+    <p><strong>Shipping Address:</strong> {{ product.ShipAddress }}</p>
+    <p><strong>Shipping Country:</strong> {{ product.ShipCountry }}</p>
+    <p><strong>Stock Available:</strong> {{ product.Stock }}</p>
+    <p class="order-date"><strong>Order Date:</strong> {{ product.OrderDate | date:'fullDate' }}</p>
+  </div>
+</div>

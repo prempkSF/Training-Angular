@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ProductComponent } from './product/product.component';
 import { AuthGuardService } from './authguard.service';
 import { DeactivateService } from '../deactivate.service';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 const routes: Routes = [
   {
     path: "",
@@ -23,7 +24,11 @@ const routes: Routes = [
     path : "product",
     component : ProductComponent,
     canActivate : [AuthGuardService],
-    canDeactivate : [DeactivateService]
+    canDeactivate : [DeactivateService] 
+  },
+  {
+    path:"product/:id",
+    component:ProductDetailComponent
   }
 ];
 
