@@ -10,13 +10,13 @@ export class CustomCityDirective implements AfterViewInit{
 
   ngAfterViewInit(): void {
 
-    if(this.shipCity=="India")
+    if(this.shipCity=="Toddler")
     {
-      this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', "green");
+      this.renderer.setStyle(this.el.nativeElement, 'color', "green");
     }
     else
     {
-      this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', "yellow");
+      this.renderer.setStyle(this.el.nativeElement, 'color', "blue");
     }
     
     

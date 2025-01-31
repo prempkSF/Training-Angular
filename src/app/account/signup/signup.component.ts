@@ -3,7 +3,7 @@ import { TextBox } from '@syncfusion/ej2-angular-inputs'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  styleUrls: ['./signup.component.scss',]
 })
 export class SignupComponent {
 

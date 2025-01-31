@@ -1,5 +1,9 @@
+
 <div class="product-detail-container">
+  
   <div class="product-image">
+    <button (click)="goBack()" class="back-button"><-- Back</button>
+    <h2>Product Detail</h2>
     <img [src]="product.Image" [alt]="product.ProductName">
   </div>
   <div class="product-info">

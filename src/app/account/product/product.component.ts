@@ -25,22 +25,22 @@ export class ProductComponent implements OnInit, OnDestroy {
   productStock!: number;
   @ViewChild('grid') grid!: Grid;
   dataSource: ProductOrder[] = dataSource;
-  dataSourceStockLessTen: ProductOrder[] = dataSource.filter((product) => { return product.Stock < 10 });
-  dataSourceStockLessHundred: ProductOrder[] = dataSource.filter((product) => { return product.Stock <= 100 && product.Stock >= 10 });
-  dataSourceStockGreaterHundred: ProductOrder[] = dataSource.filter((product) => { return product.Stock >= 100 });
+  dataSourceInfant: ProductOrder[] = dataSource.filter((product) => { return product.Category == "Kid" });
+  dataSourceToddler: ProductOrder[] = dataSource.filter((product) => { return product.Category =="Toddler" });
+  dataSourceKid: ProductOrder[] = dataSource.filter((product) => { return product.Category =="Kid" });
   public listFields: { [key: string]: Object } = { id: "id", text: "text",isVisible:"isVisible" };
   gridShow: number = 0;
 
   filterSettings: Object = { type: 'Excel' };
   public ListData: { [key: string]: Object }[] = [
     {
-      id: "1", text: "Less than 10",isVisible:"false"
+      id: "1", text: "Infant"
     },
     {
-      id: "2", text: "Less than 100",isVisible:"false"
+      id: "2", text: "Toddler"
     },
     {
-      id: "3", text: "Greater than 100",isVisible:"false"
+      id: "3", text: "Kid"
     },
   ];
   subscription: Subscription = new Subscription();
@@ -51,7 +51,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('mouseenter')
-  handleKeyDown(event: KeyboardEvent) {
+  handleMouseHover(event: KeyboardEvent) {
     localStorage.setItem('isValue',"true");
   }
   OnSelect(args: any) {
@@ -79,6 +79,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.dataCommunicationService.grandparentData$.subscribe(data => {
         if (data) {
+          this.productStock=data;
           console.log("Data from Grand Parent", data);
         }
       }

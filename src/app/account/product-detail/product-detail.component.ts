@@ -14,7 +14,9 @@ export class ProductDetailComponent implements OnInit {
   constructor(private _Activatedroute: ActivatedRoute, private router: Router, private location: Location) {
     this.product = this.router.getCurrentNavigation()!.extras.state!['data'] as ProductOrder;
   }
-
+  goBack(): void {
+    this.location.back();
+  }
   id!: string | null;
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import { Component, ViewChild, Output, EventEmitter, ElementRef, OnDestroy } fro
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { ProductOrder } from '../dataSource';
 import { GrandparentDialogComponent } from './grand-child-dialog/grand-child-dialog.component';  // Import the Grandparent Dialog component
+import { DropDownList } from '@syncfusion/ej2-angular-dropdowns';
 
 @Component({
   selector: 'app-custom-dialog',
@@ -17,6 +18,9 @@ export class CustomDialogComponent implements OnDestroy {
   @Output() dataSent = new EventEmitter<ProductOrder>();
   formData!: ProductOrder;
 
+  dropDown : string[] =[`Infant`,`Toddlers`,`Kids`];
+  dropDownValue:string='';
+
   @ViewChild('productName') productName!: ElementRef;
   @ViewChild('imgUrl') imgUrl!: ElementRef;
   @ViewChild('productID') productID!: ElementRef;
@@ -24,6 +28,7 @@ export class CustomDialogComponent implements OnDestroy {
   @ViewChild('orderDate') OrderDate!: ElementRef;
   @ViewChild('shipAddress') shipAddress!: ElementRef;
   @ViewChild('shipcountry') Shipcountry!: ElementRef;
+  @ViewChild('shipcountry') category!: DropDownList;
 
   // Open the Parent Dialog
   public onOpenDialog = (event: any): void => {
@@ -42,6 +47,7 @@ export class CustomDialogComponent implements OnDestroy {
 
   // Handle form submission in the Parent Dialog (Custom Dialog)
   onSubmit() {
+    console.log(this.dropDownValue)
     this.formData = new ProductOrder(
       this.imgUrl.nativeElement.value,
       this.productName.nativeElement.value,
@@ -50,7 +56,8 @@ export class CustomDialogComponent implements OnDestroy {
       this.OrderDate.nativeElement.value,
       this.Shipcountry.nativeElement.value,
       this.shipAddress.nativeElement.value,
-      10
+      0,
+      this.dropDownValue
     );
 
     // Emit data to the parent component

@@ -14,10 +14,10 @@
 
         <br>
         <div class="btns">
-            <button [ngClass]="signUpBtn ? 'disabled' : 'enabled' " (click)="submit()">SignUp</button>
+            <button [ngClass]="signUpBtn ? 'disabled' : 'enabled' " (click)="submit()" class="btn btn-primary">SignUp</button>
 
             <a routerLink="/account/login" routerLinkActive="active"
-                ariaCurrentWhenActive="page"><button>Login</button></a>
+                ariaCurrentWhenActive="page"><button class="btn btn-primary">Login</button></a>
         </div>
 
 

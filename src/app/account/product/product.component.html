@@ -1,5 +1,6 @@
 <div class="grid">
-  <div>
+  <div >
+    <div class="pushElements">
     <ejs-toolbar id="listToolbar" (clicked)="toolbarCliked($event)">
       <e-items class="toolbarContent">
         <e-item prefixIcon="e-tbar-menu-icon tb-icons" tooltipText="Menu"></e-item>
@@ -14,34 +15,36 @@
         </e-item>
       </e-items>
     </ejs-toolbar>
-  </div>
-  <ejs-sidebar #sidebarInstance id="listSidebar" class="sidebar-list" #sidebarTreeviewInstance width="250px"
-    target=".listmaincontent" type="Slide" [isOpen]='false'>
-    <ejs-listview id="listSidebarList" bind-dataSource='ListData' template={this.listTemplate} [fields]='listFields'
-      (select)="OnSelect($event)" >
-      <ng-template #template let-dataSource="">
-        <div class="list-wrapper">
+    <div #dialogContainer id="dialog-container">
+      <app-custom-dialog (dataSent)="onDataReceived($event)"></app-custom-dialog>
+    </div>
+    </div>
+    <ejs-sidebar #sidebarInstance id="listSidebar" class="sidebar-list" #sidebarTreeviewInstance width="250px"
+      target=".listmaincontent" type="Push" [isOpen]='false'>
+      <ejs-listview id="listSidebarList" bind-dataSource='ListData' template={this.listTemplate} [fields]='listFields'
+        (select)="OnSelect($event)">
+        <ng-template #template let-dataSource="">
+          <div class="list-wrapper">
 
-          <span class="text e-text-content">{{dataSource.text}}</span>
-        </div>
-      </ng-template>
-    </ejs-listview>
-  </ejs-sidebar>
-  <!-- Custom Dialog (Parent Dialog) -->
-  <!-- <div #dialogContainer id="dialog-container">
-    <app-custom-dialog (dataSent)="onDataReceived($event)"></app-custom-dialog>
-  </div> -->
-  <!-- <div class="btns">
+            <span class="text e-text-content">{{dataSource.text}}</span>
+          </div>
+        </ng-template>
+      </ejs-listview>
+    </ejs-sidebar>
+    <!-- Custom Dialog (Parent Dialog) -->
+    <ng-container>
+      <ng-container
+        *ngTemplateOutlet="productGrid; context: {$implicit: gridShow==1?dataSourceInfant:gridShow==2?dataSourceToddler:gridShow==3?dataSourceKid:dataSource }"></ng-container>
+    </ng-container>
+
+    <!-- <div class="btns">
     <button class="catergotybtn" (click)="changeStock(10)">Less than 10</button>
     <button class="catergotybtn" (click)="changeStock(100)">Less than 100</button>
     <button class="catergotybtn" (click)="changeStock(101)">Greater than 10</button>
   </div> -->
 
-  <ng-container>
-    <ng-container
-      *ngTemplateOutlet="productGrid; context: {$implicit: gridShow==1?dataSourceStockLessTen:gridShow==2?dataSourceStockLessHundred:gridShow==3?dataSourceStockGreaterHundred:dataSource }"></ng-container>
-  </ng-container>
-  <!-- <ng-container *ngIf="gridShow==1">
+
+    <!-- <ng-container *ngIf="gridShow==1">
     <h1 class="heading">Product Stock Less than 10</h1>
     <ng-container *ngTemplateOutlet="productGrid; context: {$implicit: dataSourceStockLessTen}"></ng-container>
   </ng-container>
@@ -55,44 +58,52 @@
     <ng-container *ngTemplateOutlet="productGrid; context: {$implicit: dataSourceStockGreaterHundred}"></ng-container>
   </ng-container> -->
 
-  <ng-template #productGrid let-data>
-    <ejs-grid #grid [dataSource]="data" [allowPaging]="true" [allowSorting]="true" [sortSettings]="sortSettings"
-      [allowTextWrap]='true' [pageSettings]="{ pageSizes: true, pageCount: 4 }" [allowFiltering]="true"
-      [filterSettings]="filterSettings">
+    <ng-template #productGrid let-data>
+      <ejs-grid #grid [dataSource]="data" [allowPaging]="true" [allowSorting]="true" [sortSettings]="sortSettings"
+        [allowTextWrap]='true' [pageSettings]="{ pageSizes: true, pageCount: 4 }" [allowFiltering]="true"
+        [filterSettings]="filterSettings">
 
-      <e-columns>
-        <e-column field='ProductName' headerText='Product Name' textAlign='Left' width=150></e-column>
-        <e-column field='ProductID' headerText='Product ID' textAlign='Left' width=150  >
-          <ng-template #template  let-data>
-            <div ><a (click)="getProduct(data.ProductID)">{{data.ProductID}}</a></div>
-          </ng-template>
-        </e-column>
-        <e-column field="Image" headerText="Product Image" textAlign="Left" width="150">
-          <ng-template class="img" #template let-data>
-            <img src="{{data.Image}}" style="width:80px;height:80px;">
-          </ng-template>
-        </e-column>
-        <e-column field='CustomerID' headerText='Customer ID' width=150></e-column>
-        <e-column field='OrderDate' headerText='Order Date' textAlign='Left' format='d/M/y' width=150>
-          <ng-template #template let-data>
-            <div>{{data.OrderDate | date:"longDate"}}</div>
-          </ng-template>
-        </e-column>
-        <e-column field='ShipCountry' headerText='Ship Country' width="150">
-          <ng-template #template let-data>
-            <div appCustomCity [shipCity]='data.ShipCity'>
-              {{data.ShipCountry}}
-            </div>
-          </ng-template>
-        </e-column>
-        <e-column field='Stock' headerText='Stock' textAlign='Right' width=120></e-column> <!-- New Stock Column -->
-        <e-column field="Image" width="150">
-          <ng-template #template let-data>
-            <a href='{{data.Image}}'>{{data.Image | custompipe}}</a>
-          </ng-template>
-        </e-column>
-        <e-column field='ShipAddress' headerText='Ship Address' textAlign='Left' width=150></e-column>
-      </e-columns>
-    </ejs-grid>
-  </ng-template>
+        <e-columns>
+          <e-column field='ProductName' headerText='Product Name' textAlign='Left' width=150></e-column>
+          <e-column field='ProductID' headerText='Product ID' textAlign='Left' width=150>
+            <ng-template #template let-data>
+              <div><a (click)="getProduct(data.ProductID)">{{data.ProductID}}</a></div>
+            </ng-template>
+          </e-column>
+          <e-column field="Image" headerText="Product Image" textAlign="Left" width="150">
+            <ng-template class="img" #template let-data>
+              <div style="display: flex; flex-direction: column;">
+                <img src="{{data.Image}}" style="width:80px;height:80px;">
+                <a href='{{data.Image}}'>{{data.Image | custompipe}}</a>
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column field='Category' headerText='Category' width="150">
+            <ng-template #template let-data>
+              <div appCustomCity [shipCity]='data.Category'>
+                {{data.Category}}
+              </div>
+
+            </ng-template>
+          </e-column>
+          <e-column field='CustomerID' headerText='Customer ID' width=150></e-column>
+          <e-column field='OrderDate' headerText='Order Date' textAlign='Left' format='d/M/y' width=150>
+            <ng-template #template let-data>
+              <div>{{data.OrderDate | date:"longDate"}}</div>
+            </ng-template>
+          </e-column>
+          <e-column field='ShipCountry' headerText='Ship Country' width="150">
+            <ng-template #template let-data>
+              <div>
+                {{data.ShipCountry}}
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column field='Stock' headerText='Stock' textAlign='Right' width=120></e-column> <!-- New Stock Column -->
+
+          <e-column field='ShipAddress' headerText='Ship Address' textAlign='Left' width=150></e-column>
+        </e-columns>
+      </ejs-grid>
+    </ng-template>
+  </div>
 </div>

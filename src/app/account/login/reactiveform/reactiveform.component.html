@@ -1,4 +1,5 @@
 <div class="form-container">
+  <h2>User Log In</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <!-- Dynamically generate form controls -->
     <div *ngFor="let field of formFields" class="form-group">
@@ -29,7 +30,9 @@
       </div>
     </div>
 
-    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    <a routerLink="/account/signup" routerLinkActive="active"
+                ariaCurrentWhenActive="page"><button class="btn btn-primary">Sign Up</button></a>
   </form>
 
 
