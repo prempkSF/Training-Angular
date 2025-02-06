@@ -6,6 +6,7 @@ import { ProductComponent } from './product/product.component';
 import { AuthGuardService } from './authguard.service';
 import { DeactivateService } from '../deactivate.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDetailResolveService } from './product-detail/product-detail-resolve.service';
 const routes: Routes = [
   {
     path: "",
@@ -28,7 +29,8 @@ const routes: Routes = [
   },
   {
     path:"product/:id",
-    component:ProductDetailComponent
+    component:ProductDetailComponent,
+    resolve :{ProductOrder:ProductDetailResolveService}
   }
 ];
 

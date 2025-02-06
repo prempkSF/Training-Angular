@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductOrder } from '../product/dataSource';
+import { ProductDetailResolveService } from './product-detail-resolve.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,8 +12,8 @@ import { ProductOrder } from '../product/dataSource';
 export class ProductDetailComponent implements OnInit {
   product!: ProductOrder;
 
-  constructor(private _Activatedroute: ActivatedRoute, private router: Router, private location: Location) {
-    this.product = this.router.getCurrentNavigation()!.extras.state!['data'] as ProductOrder;
+  constructor(private _activatedroute: ActivatedRoute, private location: Location) {
+    // this.product = this.router.getCurrentNavigation()!.extras.state!['data'] as ProductOrder;
   }
   goBack(): void {
     this.location.back();
@@ -20,6 +21,9 @@ export class ProductDetailComponent implements OnInit {
   id!: string | null;
 
   ngOnInit() {
-    this.id = this._Activatedroute.snapshot.paramMap.get('id');
+    this._activatedroute.data.subscribe((data)=>{
+      this.product = data['ProductOrder'];
+    });
+    
   }
 }

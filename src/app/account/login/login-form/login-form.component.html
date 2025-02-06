@@ -16,15 +16,15 @@
         </div>
     </div>
     <div class="form-group">
-        <input class="form-control" type="password" required minlength="4" name="password" [(ngModel)]="password"
+        <input class="form-control" type="password" required minlength="4" #password="ngModel" [(ngModel)]="password"
             ngModel>
 
         <div class="errmsg"
-            *ngIf="loginForm.controls['password']?.errors && (loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched)">
-            <small class="errmsg" [hidden]="loginForm.controls['password'].errors ? false : true">
+            *ngIf="password.errors && (password?.dirty || password?.touched)">
+            <small class="errmsg" [hidden]="password.errors ? false : true">
                 Password is required
             </small>
-            <small class="errmsg" [hidden]="loginForm.controls['password'].hasError('minlength') ? false : true">
+            <small class="errmsg" [hidden]="password.hasError('minlength') ? false : true">
                 Enter minimun 4 characters
             </small>
         </div>

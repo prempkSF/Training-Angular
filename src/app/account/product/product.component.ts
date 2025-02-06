@@ -91,7 +91,7 @@ getProduct(productID:number)
 {
   const product=dataSource.find((prod)=>prod.ProductID==productID);
   console.log(product)
-  this.router.navigate(['account/product/',productID],{state:{data:product}});
+  this.router.navigate(['account/product/',productID]);
 }
 
   changeStock(stock: number) {

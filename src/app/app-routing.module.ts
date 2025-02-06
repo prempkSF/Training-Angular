@@ -4,7 +4,7 @@ import { RouterOutlet,RouterLink,RouterLinkActive } from '@angular/router';
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "account",
+    redirectTo: "account",  
     pathMatch : "full"
   },
   {
