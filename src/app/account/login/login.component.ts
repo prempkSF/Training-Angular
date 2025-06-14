@@ -53,7 +53,7 @@ export class LoginComponent {
     }
     else {
       localStorage.setItem('loginTrue', 'false');
-      alert("Username Password Incorrect");
+      alert("Username or Password Incorrect");
     }
   }
 }
